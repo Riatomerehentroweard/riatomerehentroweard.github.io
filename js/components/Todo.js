@@ -14,7 +14,8 @@ export default class Todo extends React.Component {
     const { complete, text } = this.props;
 
     var decoration = {
-      textDecoration: complete ? 'line-through' : ''
+      textDecoration: complete ? 'line-through' : '',
+        color: complete ? '#c1c1c1' : 'black',
     };
 
     return (

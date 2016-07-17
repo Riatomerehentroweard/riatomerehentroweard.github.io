@@ -34,6 +34,7 @@ export default class Featured extends React.Component {
 
   addItem() {
     TodoActions.createTodo(this.state.currentInput);
+    this.setState({currentInput: ''});
   }
 
   render() {
@@ -46,7 +47,7 @@ export default class Featured extends React.Component {
     return (
       <div>
         <h1>Todos</h1>
-        <input onChange={this.saveUserInput.bind(this)} type="text" />
+        <input onChange={this.saveUserInput.bind(this)} type="text" value={this.state.currentInput} />
         <button onClick={this.addItem.bind(this)}>Add</button> <br/><br/>
         <ul>{TodoComponents}</ul>
       </div>
