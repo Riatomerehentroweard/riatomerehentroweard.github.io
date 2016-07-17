@@ -28,6 +28,17 @@ class TodoStore extends EventEmitter {
       complete: false,
     });
 
+    // broadcast the 'change' of our Store to our controller-views
+    // without this broadcast the store will be update, but the props in the view won't take any notice
+    this.emit("change");
+  }
+
+  updateTodo(id) {
+    var indexOfSelectedItem = this.todos.findIndex(item => item.id === id),
+        oldStatus = this.todos[indexOfSelectedItem].complete;
+
+    this.todos[indexOfSelectedItem].complete = !oldStatus;
+
     this.emit("change");
   }
 
@@ -44,6 +55,10 @@ class TodoStore extends EventEmitter {
       case "RECEIVE_TODOS": {
         this.todos = action.todos;
         this.emit("change");
+        break;
+      }
+      case "UPDATE_TODO": {
+        this.updateTodo(action.id);
         break;
       }
     }

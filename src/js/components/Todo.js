@@ -1,4 +1,5 @@
 import React from "react";
+import * as TodoActions from "../actions/TodoActions";
 
 export default class Todo extends React.Component {
   constructor(props) {
@@ -6,8 +7,7 @@ export default class Todo extends React.Component {
   }
 
   toggleCompleteStatus(completeToggle) {
-    console.log('completeToggle.target.checked', completeToggle.target.checked);
-    console.log('this.props.id', this.props.id)
+    TodoActions.updateTodo(this.props.id);
   }
 
   render() {
@@ -26,7 +26,6 @@ export default class Todo extends React.Component {
         <span>{text}</span>&nbsp;
         <input type="checkbox" onClick={this.toggleCompleteStatus.bind(this)}/>
         <br/>
-        <span>{complete}</span>
       </li>
     );
   }
