@@ -49,11 +49,9 @@ export default class Featured extends React.Component {
 
     return (
       <div>
-        <p>test</p>
-        <input onChange={this.saveUserInput.bind(this)} type="text" />
-        <button onClick={this.addItem.bind(this)}>Add</button> <br/>
-        <button onClick={this.reloadTodos.bind(this)}>Reload!</button>
         <h1>Todos</h1>
+        <input onChange={this.saveUserInput.bind(this)} type="text" />
+        <button onClick={this.addItem.bind(this)}>Add</button> <br/><br/>
         <ul>{TodoComponents}</ul>
       </div>
     );

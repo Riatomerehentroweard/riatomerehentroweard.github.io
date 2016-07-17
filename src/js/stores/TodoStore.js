@@ -7,12 +7,6 @@ class TodoStore extends EventEmitter {
     super()
     this.todos = [
       {
-        id: 113464613,
-        text: "Go Shopping",
-        edit: true,
-        complete: false
-      },
-      {
         id: 235684679,
         text: "Pay Water Bill",
         complete: false
