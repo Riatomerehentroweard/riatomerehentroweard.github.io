@@ -22,7 +22,7 @@ class TodoStore extends EventEmitter {
   createTodo(text) {
     const id = Date.now();
 
-    this.todos.push({
+    this.todos.unshift({
       id,
       text,
       complete: false,
@@ -38,6 +38,18 @@ class TodoStore extends EventEmitter {
         oldStatus = this.todos[indexOfSelectedItem].complete;
 
     this.todos[indexOfSelectedItem].complete = !oldStatus;
+    this.todos.sort((a,b) => {
+
+      if(a.complete && !b.complete) {
+        return 1;
+      }
+
+      if(b.complete && !a.complete) {
+        return -1;
+      }
+
+      return 0;
+    });
 
     this.emit("change");
   }
