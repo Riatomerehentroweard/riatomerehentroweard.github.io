@@ -35,6 +35,7 @@ export default class Featured extends React.Component {
   addItem() {
     TodoActions.createTodo(this.state.currentInput);
     this.setState({currentInput: ''});
+    event.preventDefault();
   }
 
   render() {
@@ -45,12 +46,12 @@ export default class Featured extends React.Component {
     });
 
     return (
-      <div>
+      <form onSubmit={this.addItem.bind(this)}>
         <h1>Todos</h1>
         <input onChange={this.saveUserInput.bind(this)} type="text" value={this.state.currentInput} />
-        <button onClick={this.addItem.bind(this)}>Add</button> <br/><br/>
+        <button type="submit">Add</button> <br/><br/>
         <ul>{TodoComponents}</ul>
-      </div>
+      </form>
     );
   }
 }
