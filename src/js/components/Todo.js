@@ -5,10 +5,13 @@ export default class Todo extends React.Component {
     super();
   }
 
+  toggleCompleteStatus(completeToggle) {
+    console.log('completeToggle.target.checked', completeToggle.target.checked);
+    console.log('this.props.id', this.props.id)
+  }
+
   render() {
     const { complete, edit, text } = this.props;
-
-    const icon = complete ? "\u2714" : "\u2716"
 
     if (edit) {
       return (
@@ -20,8 +23,10 @@ export default class Todo extends React.Component {
 
     return (
       <li>
-        <span>{text}</span>
-        <span>{icon}</span>
+        <span>{text}</span>&nbsp;
+        <input type="checkbox" onClick={this.toggleCompleteStatus.bind(this)}/>
+        <br/>
+        <span>{complete}</span>
       </li>
     );
   }

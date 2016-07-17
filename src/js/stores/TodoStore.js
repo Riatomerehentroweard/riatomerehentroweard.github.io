@@ -4,7 +4,7 @@ import dispatcher from "../dispatcher";
 
 class TodoStore extends EventEmitter {
   constructor() {
-    super()
+    super();
     this.todos = [
       {
         id: 235684679,
