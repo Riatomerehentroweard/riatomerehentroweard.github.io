@@ -9,6 +9,7 @@ class TodoStore extends EventEmitter {
       {
         id: 113464613,
         text: "Go Shopping",
+        edit: true,
         complete: false
       },
       {
@@ -16,6 +17,11 @@ class TodoStore extends EventEmitter {
         text: "Pay Water Bill",
         complete: false
       },
+      {
+        id: 235684671,
+        text: "My new item",
+        complete: false
+      }
     ];
   }
 
