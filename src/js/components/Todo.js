@@ -11,19 +11,16 @@ export default class Todo extends React.Component {
   }
 
   render() {
-    const { complete, edit, text } = this.props;
+    const { complete, text } = this.props;
 
-    if (edit) {
-      return (
-        <li>
-          <input value={text} focus="focused"/>
-        </li>
-      );
-    }
+    var decoration = {
+      textDecoration: complete ? 'line-through' : ''
+    };
 
     return (
       <li>
-        <span>{text}</span>&nbsp;
+        <span style={decoration}>{text}</span>&nbsp;
+        <span>{complete}</span>&nbsp;
         <input type="checkbox" onClick={this.toggleCompleteStatus.bind(this)}/>
         <br/>
       </li>
