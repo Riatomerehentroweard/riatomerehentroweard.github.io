@@ -28,16 +28,12 @@ export default class Featured extends React.Component {
     });
   }
 
-  reloadTodos() {
-    TodoActions.reloadTodos();
-  }
-
   saveUserInput(e) {
     this.setState({currentInput: e.target.value});
   }
 
   addItem() {
-    TodoStore.createTodo(this.state.currentInput);
+    TodoActions.createTodo(this.state.currentInput);
   }
 
   render() {
