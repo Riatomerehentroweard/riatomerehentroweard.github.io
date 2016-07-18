@@ -13,6 +13,8 @@ export default class Todo extends React.Component {
   render() {
     const { complete, text } = this.props;
 
+    const trashCan = complete ? "\u2716" : "";
+
     var decoration = {
       textDecoration: complete ? 'line-through' : '',
         color: complete ? '#c1c1c1' : 'black',
@@ -22,7 +24,8 @@ export default class Todo extends React.Component {
       <li>
         <span style={decoration}>{text}</span>&nbsp;
         <span>{complete}</span>&nbsp;
-        <input type="checkbox" onClick={this.toggleCompleteStatus.bind(this)}/>
+        <input type="checkbox" onClick={this.toggleCompleteStatus.bind(this)}/>&nbsp;
+        <span>{trashCan}</span>
         <br/>
       </li>
     );
