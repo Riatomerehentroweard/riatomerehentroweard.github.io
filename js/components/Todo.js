@@ -6,18 +6,26 @@ export default class Todo extends React.Component {
     super();
   }
 
-  toggleCompleteStatus(completeToggle) {
+  toggleCompleteStatus() {
     TodoActions.updateTodo(this.props.id);
   }
+
+    removeItem() {
+        TodoActions.deleteTodo(this.props.id);
+    }
 
   render() {
     const { complete, text } = this.props;
 
-    const trashCan = complete ? "\u2716" : "";
+    const deleteIcon = complete ? "\u2716" : "";
 
     var decoration = {
       textDecoration: complete ? 'line-through' : '',
         color: complete ? '#c1c1c1' : 'black',
+    };
+
+    var clickable = {
+      cursor: 'pointer'
     };
 
     return (
@@ -25,7 +33,7 @@ export default class Todo extends React.Component {
         <span style={decoration}>{text}</span>&nbsp;
         <span>{complete}</span>&nbsp;
         <input type="checkbox" onClick={this.toggleCompleteStatus.bind(this)}/>&nbsp;
-        <span>{trashCan}</span>
+        <span style={clickable} onClick={this.removeItem.bind(this)}>{deleteIcon}</span>
         <br/>
       </li>
     );
