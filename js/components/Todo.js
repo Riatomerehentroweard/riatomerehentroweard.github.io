@@ -19,21 +19,32 @@ export default class Todo extends React.Component {
 
     const deleteIcon = complete ? "\u2716" : "";
 
-    var decoration = {
+    var decorationStyle = {
       textDecoration: complete ? 'line-through' : '',
         color: complete ? '#c1c1c1' : 'black',
+        paddingRight: '1em'
     };
 
-    var clickable = {
-      cursor: 'pointer'
+    var clickableStyle = {
+      cursor: 'pointer',
+        position: 'absolute',
+      right: '-20px',
+      top: '5px',
+      color: 'red',
+      fontSize: '1.5em'
+    };
+
+    var completeStyle = {
+      position: 'absolute',
+      right: '10px'
     };
 
     return (
-      <li>
-        <span style={decoration}>{text}</span>&nbsp;
+      <li class="list-group-item">
+        <span style={decorationStyle}>{text}</span>&nbsp;
         <span>{complete}</span>&nbsp;
-        <input type="checkbox" onClick={this.toggleCompleteStatus.bind(this)}/>&nbsp;
-        <span style={clickable} onClick={this.removeItem.bind(this)}>{deleteIcon}</span>
+        <input style={completeStyle} type="checkbox" onClick={this.toggleCompleteStatus.bind(this)}/>&nbsp;
+        <span style={clickableStyle} onClick={this.removeItem.bind(this)}>{deleteIcon}</span>
         <br/>
       </li>
     );
